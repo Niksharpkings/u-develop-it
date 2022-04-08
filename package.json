@@ -4,14 +4,15 @@
   "description": "u-develop-it is a UCLAx Coding Bootcamp Full-Stack Developer module assignment where i will use ( HTML, CSS, JS, Node.js, express.js, and Mysql and mysql2, and more. This project is for my understanding and new usage to Mysql.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Niksharpkings/u-develop-it.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nikita Sharpio",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Niksharpkings/u-develop-it/issues"
@@ -20,5 +21,8 @@
   "dependencies": {
     "express": "^4.17.3",
     "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
