@@ -76,7 +76,7 @@ const inputCheck = require('../../utils/inputCheck');
         return;
       }
       res.json({
-        message: 'success',
+        message: 'Post created successfully',
         data: body,
         changes: result.affectedRows
       });
@@ -92,8 +92,7 @@ const inputCheck = require('../../utils/inputCheck');
       return;
     }
   
-    const sql = `UPDATE candidates SET party_id = ? 
-                 WHERE id = ?`;
+    const sql = `UPDATE candidates SET party_id = ? WHERE id = ?`;
     const params = [req.body.party_id, req.params.id];
     db.query(sql, params, (err, result) => {
       if (err) {
@@ -105,7 +104,7 @@ const inputCheck = require('../../utils/inputCheck');
         });
       } else {
         res.json({
-          message: 'success',
+          message: 'Update successful',
           data: req.body,
           changes: result.affectedRows
         });
@@ -126,7 +125,7 @@ const inputCheck = require('../../utils/inputCheck');
         });
       } else {
         res.json({
-          message: 'deleted',
+          message: 'Delete successful',
           changes: result.affectedRows,
           id: req.params.id
         });

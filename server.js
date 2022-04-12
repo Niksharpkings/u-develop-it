@@ -9,9 +9,6 @@ const apiRoutes = require('./routes/apiRoutes');
 //connect to modules and databases 
 const db = require('./db/connection');
 
-//mysql input checker
-const inputCheck = require('./utils/inputCheck');
-
 // Express middleware
 app.use(express.urlencoded({
     extended: false
@@ -29,14 +26,11 @@ app.use((req, res) => {
     });
 });
 
-//Start server after DB connection
-//express server port listener
-db.connect((err) => {
-  if (err) {
-      console.error('Error connecting to DB');
-      return;
-  }
+// Start server after DB connection
+db.connect(err => {
+  if (err) throw err;
+  console.log('Database connected.');
   app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 });

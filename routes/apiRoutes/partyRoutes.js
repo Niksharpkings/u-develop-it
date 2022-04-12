@@ -8,33 +8,37 @@ const db = require('../../db/connection');
 router.get('/api/parties', (req, res) => {
     const sql = `SELECT * FROM parties`;
     db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
+        if (err) {
+            res.status(500).json({
+                error: err.message
+            });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
     });
-  });
+});
 
 // Get single party
 router.get('/api/party/:id', (req, res) => {
     const sql = `SELECT * FROM parties WHERE id = ?`;
     const params = [req.params.id];
-  
+
     db.query(sql, params, (err, row) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: row
-      });
+        if (err) {
+            res.status(400).json({
+                error: err.message
+            });
+            return;
+        }
+        res.json({
+            message: 'Get party id success',
+            data: row
+        });
     });
-  });
+});
 
 
 // delete single party
@@ -48,12 +52,12 @@ router.delete('/api/party/:id', (req, res) => {
             });
             // checks if anything was deleted
         } else if (!result.affectedRows) {
-            res.json({ 
+            res.json({
                 message: 'Party not found'
             });
         } else {
             res.json({
-                message: 'deleted',
+                message: 'Party deleted',
                 changes: result.affectedRows,
                 id: req.params.id
             });
