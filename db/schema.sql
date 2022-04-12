@@ -2,6 +2,7 @@
 -- make sure this drop table is on top of create table or ERROR 1146 (42S02) will appear
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
+DROP TABLE IF EXISTS voters;
 
 -- the ALTER TABLE statement. This statement allows you to add a new field, delete an existing field, or modify a field.
 
@@ -27,3 +28,11 @@ CREATE TABLE candidates (
 
 
 -- The AS keyword lets you define an alias for your data, which is particularly useful when joining tables that might have overlapping field names.
+
+CREATE TABLE voters (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
